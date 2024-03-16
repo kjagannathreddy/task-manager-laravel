@@ -56,3 +56,12 @@ notes[1][attachments][]: select multiple files
 post method
 body raw json
 headers -> Authorization:Bearer {token from login api}
+{
+    "filter": {
+        "status": "Complete",
+        "due_date": "2024-03-20",
+        "priority": "High",
+        "notes": true/false
+    }
+}
+all filters are optional, you can send one or more or nothing at all.

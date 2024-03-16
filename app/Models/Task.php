@@ -27,7 +27,7 @@ class Task extends Model
     public function scopeWithFilters($query, $filters)
     {
         if (isset($filters['status'])) {
-            $query->whereIn('status', $filters['status']);
+            $query->where('status', $filters['status']);
         }
         if (isset($filters['due_date'])) {
             $query->where('due_date', $filters['due_date']);
