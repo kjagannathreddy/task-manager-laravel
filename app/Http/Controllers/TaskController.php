@@ -32,10 +32,12 @@ class TaskController extends Controller
                 foreach ($request->notes as $noteData) {
                     $attachments = [];
 
-                    foreach ($noteData['attachments'] as $attachment) {
-                        $fileName = \Str::random(32) . '.' . $attachment->getClientOriginalExtension();
-                        $attachment->move(public_path('uploads'), $fileName);
-                        $attachments[] = $fileName;
+                    if (!empty($noteData['attachments'])) {
+                        foreach ($noteData['attachments'] as $attachment) {
+                            $fileName = \Str::random(32) . '.' . $attachment->getClientOriginalExtension();
+                            $attachment->move(public_path('uploads'), $fileName);
+                            $attachments[] = $fileName;
+                        }
                     }
 
                     $note = $task->notes()->create([
